@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="24ebd518-1c6d-4807-8c9c-a8c306608bc6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/ComputeEvolutions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/CountLivingNeighbours.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/GetGridFromTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/ArchiCleanApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/ArchiCleanApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/EvolveGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/EvolveGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/InitializeGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/octo/kata/archiclean/usecases/InitializeGrid.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZwV7Z2D93e06sV0HWlzHjuTF7m" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.octo.kata.archiclean.usecases" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ArchiCleanApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.octo.kata.archiclean.ArchiCleanApplicationTests&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ArchiCleanApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="24ebd518-1c6d-4807-8c9c-a8c306608bc6" name="Default Changelist" comment="" />
+      <created>1585749976311</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585749976311</updated>
+      <workItem from="1585749977809" duration="3238000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2252" y="336" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1585750101172">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="2252" y="336" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585750101172" />
+    <state x="1988" y="91" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1585750099086">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="1988" y="91" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585750099086" />
+    <state width="1878" height="267" key="GridCell.Tab.0.bottom" timestamp="1585753434769">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="267" key="GridCell.Tab.0.bottom/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585753434769" />
+    <state width="1878" height="267" key="GridCell.Tab.0.center" timestamp="1585753434768">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="267" key="GridCell.Tab.0.center/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585753434768" />
+    <state width="1878" height="267" key="GridCell.Tab.0.left" timestamp="1585753434767">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="267" key="GridCell.Tab.0.left/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585753434767" />
+    <state width="1878" height="267" key="GridCell.Tab.0.right" timestamp="1585753434768">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="267" key="GridCell.Tab.0.right/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585753434768" />
+    <state x="2069" y="165" width="661" height="528" key="find.popup" timestamp="1585753419754">
+      <screen x="1440" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="2069" y="165" width="661" height="528" key="find.popup/1440.-111.1920.1080/0.0.1440.900@1440.-111.1920.1080" timestamp="1585753419754" />
+  </component>
+</project>

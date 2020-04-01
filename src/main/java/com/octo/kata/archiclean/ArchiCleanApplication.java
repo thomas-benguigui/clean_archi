@@ -3,6 +3,9 @@ package com.octo.kata.archiclean;
 import com.octo.kata.archiclean.entities.Cell;
 import com.octo.kata.archiclean.entities.State;
 import com.octo.kata.archiclean.repositories.StateRepository;
+import com.octo.kata.archiclean.usecases.ComputeEvolutions;
+import com.octo.kata.archiclean.usecases.GetGridFromTemplate;
+import com.octo.kata.archiclean.usecases.InitializeGrid;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,8 +28,7 @@ public class ArchiCleanApplication {
 
     @GetMapping(value = "/grid", produces = APPLICATION_JSON_VALUE)
     public List<Cell> getFromTemplate(@RequestParam("template") String template) throws IOException {
-        State[][] grid = StateRepository.getFromTemplate(template);
-
+        State[][] grid = GetGridFromTemplate.execute(template);
         return gridToCellArray(grid);
     }
 
@@ -37,7 +39,7 @@ public class ArchiCleanApplication {
         Integer height = cellArrayDimensions.getRight();
 
         State[][] grid = cellArrayToGrid(cells, width, height);
-        State[][] newGrid = computeEvolutions(grid);
+        State[][] newGrid = ComputeEvolutions.execute(grid);
         return gridToCellArray(newGrid);
     }
 
@@ -84,16 +86,6 @@ public class ArchiCleanApplication {
         return Pair.of(maxX + 1, maxY + 1);
     }
 
-    private State[][] initializeGrid(int width, int height) {
-        State[][] grid = new State[height][width];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                grid[y][x] = State.DEAD;
-            }
-        }
-        return grid;
-    }
-
     private Boolean hasNextRow(State[][] grid, Integer y) {
         return y < (grid.length - 1);
     }
@@ -109,65 +101,7 @@ public class ArchiCleanApplication {
                 .collect(toList());
     }
 
-    private Integer countLivingNeighbours(State[][] grid, int x, int y) {
-        List<State> neighbours = new ArrayList<>();
-        if (x > 0) {
-            neighbours.add(grid[y][x - 1]);
-        }
-        if (y > 0) {
-            neighbours.add(grid[y - 1][x]);
-        }
-        if (x > 0 && y > 0) {
-            neighbours.add(grid[y - 1][x - 1]);
-        }
-        if (x > 0 && hasNextRow(grid, y)) {
-            neighbours.add(grid[y + 1][x - 1]);
-        }
-        if (y > 0 && hasNextColumn(grid, x, y)) {
-            neighbours.add(grid[y - 1][x + 1]);
-        }
-        if (hasNextColumn(grid, x, y)) {
-            neighbours.add(grid[y][x + 1]);
-        }
-        if (hasNextColumn(grid, x, y) && hasNextRow(grid, y)) {
-            neighbours.add(grid[y + 1][x + 1]);
-        }
-        if (hasNextRow(grid, y)) {
-            neighbours.add(grid[y + 1][x]);
-        }
-        return filterOutDeadCells(neighbours).size();
-    }
-
-    private Boolean willStayAlive(State[][] grid, Integer x, Integer y) {
-        Integer living = countLivingNeighbours(grid, x, y);
-        if (living == 3) {
-            return true;
-        }
-        if (living == 2) {
-            return grid[y][x] == State.ALIVE;
-        }
-        return false;
-    }
-
     private Pair<Integer, Integer> getGridDimensions(State[][] grid) {
         return Pair.of(grid[0].length, grid.length);
-    }
-
-    private State[][] computeEvolutions(State[][] grid) {
-        Pair<Integer, Integer> dimensions = getGridDimensions(grid);
-        Integer width = dimensions.getLeft();
-        Integer height = dimensions.getRight();
-
-        State[][] newGrid = initializeGrid(width, height);
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                State nextState = State.DEAD;
-                if (willStayAlive(grid, x, y)) {
-                    nextState = State.ALIVE;
-                }
-                newGrid[y][x] = nextState;
-            }
-        }
-        return newGrid;
     }
 }
