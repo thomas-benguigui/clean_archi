@@ -1,18 +1,17 @@
 package com.octo.kata.archiclean;
 
-import org.apache.commons.io.FileUtils;
+import com.octo.kata.archiclean.entities.Cell;
+import com.octo.kata.archiclean.entities.State;
+import com.octo.kata.archiclean.repositories.StateRepository;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.toList;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -26,9 +25,8 @@ public class ArchiCleanApplication {
 
     @GetMapping(value = "/grid", produces = APPLICATION_JSON_VALUE)
     public List<Cell> getFromTemplate(@RequestParam("template") String template) throws IOException {
-        File file = new ClassPathResource("grids/" + template + ".grid").getFile();
-        String fileContent = FileUtils.readFileToString(file, UTF_8);
-        State[][] grid = initGridFromTemplate(fileContent);
+        State[][] grid = StateRepository.getFromTemplate(template);
+
         return gridToCellArray(grid);
     }
 
@@ -91,20 +89,6 @@ public class ArchiCleanApplication {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 grid[y][x] = State.DEAD;
-            }
-        }
-        return grid;
-    }
-
-    private State[][] initGridFromTemplate(String template) {
-        String[] lines = template.split("\n");
-        int height = lines.length;
-        int width = lines[0].length();
-
-        State[][] grid = initializeGrid(width, height);
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                grid[y][x] = (lines[y].charAt(x) == State.ALIVE.value ? State.ALIVE : State.DEAD);
             }
         }
         return grid;
@@ -185,22 +169,5 @@ public class ArchiCleanApplication {
             }
         }
         return newGrid;
-    }
-
-    enum State {
-        DEAD(' '),
-        ALIVE('o');
-
-        public char value;
-
-        State(char value) {
-            this.value = value;
-        }
-    }
-
-    static class Cell {
-        public Integer x;
-        public Integer y;
-        public Boolean alive;
     }
 }
