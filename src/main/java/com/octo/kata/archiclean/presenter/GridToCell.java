@@ -2,13 +2,15 @@ package com.octo.kata.archiclean.presenter;
 
 import com.octo.kata.archiclean.entities.Cell;
 import com.octo.kata.archiclean.entities.Grid;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class GridToCell {
 
-    public static List<Cell> execute(Grid grid) {
+    public List<Cell> execute(Grid grid) {
         List<Cell> cells = new ArrayList<>();
         for (int y = 0; y < grid.getHeight(); y++) {
             for (int x = 0; x < grid.getWidth(); x++) {

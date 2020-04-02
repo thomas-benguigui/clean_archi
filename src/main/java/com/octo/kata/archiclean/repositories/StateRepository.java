@@ -4,22 +4,24 @@ import com.octo.kata.archiclean.entities.Grid;
 import com.octo.kata.archiclean.entities.State;
 import org.apache.commons.io.FileUtils;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+@Component
 public class StateRepository {
 
-    public static Grid getFromTemplate(String template) throws IOException {
+    public Grid getFromTemplate(String template) throws IOException {
         File file = new ClassPathResource("grids/" + template + ".grid").getFile();
         String fileContent = FileUtils.readFileToString(file, UTF_8);
 
         return initGridFromTemplate(fileContent);
     }
 
-    private static Grid initGridFromTemplate(String template) {
+    private Grid initGridFromTemplate(String template) {
         String[] lines = template.split("\n");
         int height = lines.length;
         int width = lines[0].length();

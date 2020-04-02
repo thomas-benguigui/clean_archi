@@ -4,13 +4,15 @@ import com.octo.kata.archiclean.entities.Cell;
 import com.octo.kata.archiclean.entities.Grid;
 import com.octo.kata.archiclean.entities.State;
 import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class CellListToGridMapper {
 
-    public static Grid execute(List<Cell> cells) {
-        Pair<Integer, Integer> cellArrayDimensions = CellListToGridMapper.getCellArrayDimensions(cells);
+    public Grid execute(List<Cell> cells) {
+        Pair<Integer, Integer> cellArrayDimensions = this.getCellArrayDimensions(cells);
         Integer width = cellArrayDimensions.getLeft();
         Integer height = cellArrayDimensions.getRight();
 
@@ -29,7 +31,7 @@ public class CellListToGridMapper {
         return grid;
     }
 
-    private static Pair<Integer, Integer> getCellArrayDimensions(List<Cell> cells) {
+    private Pair<Integer, Integer> getCellArrayDimensions(List<Cell> cells) {
         Integer maxX = cells.get(0).getX();
         Integer maxY = cells.get(0).getY();
 
