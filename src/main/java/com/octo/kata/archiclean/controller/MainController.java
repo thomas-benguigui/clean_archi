@@ -2,6 +2,7 @@ package com.octo.kata.archiclean.controller;
 
 import com.octo.kata.archiclean.entities.Cell;
 import com.octo.kata.archiclean.entities.Grid;
+import com.octo.kata.archiclean.mapper.CellListToGridMapper;
 import com.octo.kata.archiclean.presenter.GridToCell;
 import com.octo.kata.archiclean.usecases.EvolveGrid;
 import com.octo.kata.archiclean.usecases.GetGridFromTemplate;
@@ -23,7 +24,9 @@ public class MainController {
 
     @PostMapping(value = "/grid", produces = APPLICATION_JSON_VALUE)
     public List<Cell> evolveGrid(@RequestBody List<Cell> cells) {
-        Grid newGrid = EvolveGrid.execute(cells);
+        Grid grid = CellListToGridMapper.execute(cells);
+
+        Grid newGrid = EvolveGrid.execute(grid);
         return GridToCell.execute(newGrid);
     }
 

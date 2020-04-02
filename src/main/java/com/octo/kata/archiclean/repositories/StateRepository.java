@@ -19,26 +19,15 @@ public class StateRepository {
         return initGridFromTemplate(fileContent);
     }
 
-    public static Grid initializeGrid(int width, int height) {
-        Grid grid = new Grid(width, height);
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                grid.setState(x, y, State.DEAD);
-            }
-        }
-
-        return grid;
-    }
-
     private static Grid initGridFromTemplate(String template) {
         String[] lines = template.split("\n");
         int height = lines.length;
         int width = lines[0].length();
 
-        Grid grid = initializeGrid(width, height);
+        Grid grid = new Grid(width, height).initialize();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                if (lines[y].charAt(x) == State.ALIVE.value) {
+                if (lines[y].charAt(x) == State.ALIVE.getValue()) {
                     grid.setState(x, y, State.ALIVE);
                 } else {
                     grid.setState(x, y, State.DEAD);

@@ -1,7 +1,5 @@
 package com.octo.kata.archiclean.entities;
 
-import org.apache.commons.lang3.tuple.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +7,10 @@ import static java.util.stream.Collectors.toList;
 
 public class Grid {
 
-    public int width;
-    public int height;
+    private int width;
+    private int height;
 
-    public State[][] contents;
+    private State[][] contents;
 
     public Grid(int width, int height) {
         this.width = width;
@@ -34,7 +32,8 @@ public class Grid {
     }
 
     public boolean willStayAlive(int x, int y) {
-        Integer living = countLivingNeighbours(x, y);
+        int living = countLivingNeighbours(x, y);
+
         if (living == 3) {
             return true;
         }
@@ -44,15 +43,50 @@ public class Grid {
         return false;
     }
 
-    private static Boolean hasNextRow(Grid grid, Integer y) {
-        return y < (grid.height - 1);
+    public Grid initialize() {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                setState(x, y, State.DEAD);
+            }
+        }
+
+        return this;
     }
 
-    private static Boolean hasNextColumn(Grid grid, Integer x) {
-        return x < (grid.width - 1);
+    public Grid computeEvolutions() {
+        Grid newGrid = new Grid(width, height).initialize();
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                State nextState = State.DEAD;
+
+                if (willStayAlive(x, y)) {
+                    nextState = State.ALIVE;
+                }
+                newGrid.setState(x, y, nextState);
+            }
+        }
+
+        return newGrid;
     }
 
-    private static List<State> filterOutDeadCells(List<State> neighbours) {
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    private boolean hasNextRow(int y) {
+        return y < (height - 1);
+    }
+
+    private boolean hasNextColumn(int x) {
+        return x < (width - 1);
+    }
+
+    private List<State> filterOutDeadCells(List<State> neighbours) {
         return neighbours
                 .stream()
                 .filter(value -> value == State.ALIVE)
@@ -70,27 +104,23 @@ public class Grid {
         if (x > 0 && y > 0) {
             neighbours.add(this.getState(x - 1, y - 1));
         }
-        if (x > 0 && hasNextRow(this, y)) {
+        if (x > 0 && hasNextRow(y)) {
             neighbours.add(this.getState(x - 1, y + 1));
         }
-        if (y > 0 && hasNextColumn(this, x)) {
+        if (y > 0 && hasNextColumn(x)) {
             neighbours.add(this.getState(x + 1, y - 1));
         }
-        if (hasNextColumn(this, x)) {
+        if (hasNextColumn(x)) {
             neighbours.add(this.getState(x + 1, y));
         }
-        if (hasNextColumn(this, x) && hasNextRow(this, y)) {
+        if (hasNextColumn(x) && hasNextRow(y)) {
             neighbours.add(this.getState(x + 1, y + 1));
         }
-        if (hasNextRow(this, y)) {
+        if (hasNextRow(y)) {
             neighbours.add(this.getState(x, y + 1));
         }
 
         return filterOutDeadCells(neighbours).size();
-    }
-
-    public Pair<Integer, Integer> getGridDimensions() {
-        return Pair.of(this.width, this.height);
     }
 
 }

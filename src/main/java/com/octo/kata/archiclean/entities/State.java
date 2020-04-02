@@ -5,9 +5,13 @@ public enum State {
     DEAD(' '),
     ALIVE('o');
 
-    public char value;
+    private char value;
 
     State(char value) {
         this.value = value;
+    }
+
+    public char getValue() {
+        return value;
     }
 }
