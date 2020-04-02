@@ -3,6 +3,7 @@ package com.octo.kata.archiclean.usecases;
 import com.octo.kata.archiclean.entities.Cell;
 import com.octo.kata.archiclean.entities.Grid;
 import com.octo.kata.archiclean.entities.State;
+import com.octo.kata.archiclean.repositories.StateRepository;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class EvolveGrid {
         Integer height = cellArrayDimensions.getRight();
 
         Grid grid = cellArrayToGrid(cells, width, height);
-        return ComputeEvolutions.execute(grid);
+        return computeEvolutions(grid);
     }
 
     private static Pair<Integer, Integer> getCellArrayDimensions(List<Cell> cells) {
@@ -44,5 +45,23 @@ public class EvolveGrid {
             grid.setState(cell.x, cell.y, (cell.alive ? State.ALIVE : State.DEAD));
         });
         return grid;
+    }
+
+    private static Grid computeEvolutions(Grid grid) {
+        Pair<Integer, Integer> dimensions = grid.getGridDimensions();
+        Integer width = dimensions.getLeft();
+        Integer height = dimensions.getRight();
+
+        Grid newGrid = StateRepository.initializeGrid(width, height);
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                State nextState = State.DEAD;
+                if (grid.willStayAlive(x, y)) {
+                    nextState = State.ALIVE;
+                }
+                newGrid.setState(x, y, nextState);
+            }
+        }
+        return newGrid;
     }
 }
