@@ -1,4 +1,5 @@
 package com.octo.kata.archiclean;
+
 import com.octo.kata.archiclean.controller.MainController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

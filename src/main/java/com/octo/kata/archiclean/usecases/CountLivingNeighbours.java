@@ -1,7 +1,7 @@
 package com.octo.kata.archiclean.usecases;
 
+import com.octo.kata.archiclean.entities.Grid;
 import com.octo.kata.archiclean.entities.State;
-import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,40 +17,41 @@ public class CountLivingNeighbours {
                 .collect(toList());
     }
 
-    private static Boolean hasNextRow(State[][] grid, Integer y) {
-        return y < (grid.length - 1);
+    private static Boolean hasNextRow(Grid grid, Integer y) {
+        return y < (grid.height - 1);
     }
 
-    private static Boolean hasNextColumn(State[][] grid, Integer x, Integer y) {
-        return x < (grid[y].length - 1);
+    private static Boolean hasNextColumn(Grid grid, Integer x) {
+        return x < (grid.width - 1);
     }
 
-    public static Integer execute(State[][] grid, int x, int y) {
+    public static Integer execute(Grid grid, int x, int y) {
         List<State> neighbours = new ArrayList<>();
         if (x > 0) {
-            neighbours.add(grid[y][x - 1]);
+            neighbours.add(grid.getState(x - 1, y));
         }
         if (y > 0) {
-            neighbours.add(grid[y - 1][x]);
+            neighbours.add(grid.getState(x, y - 1));
         }
         if (x > 0 && y > 0) {
-            neighbours.add(grid[y - 1][x - 1]);
+            neighbours.add(grid.getState(x - 1, y - 1));
         }
         if (x > 0 && hasNextRow(grid, y)) {
-            neighbours.add(grid[y + 1][x - 1]);
+            neighbours.add(grid.getState(x - 1, y + 1));
         }
-        if (y > 0 && hasNextColumn(grid, x, y)) {
-            neighbours.add(grid[y - 1][x + 1]);
+        if (y > 0 && hasNextColumn(grid, x)) {
+            neighbours.add(grid.getState(x + 1, y - 1));
         }
-        if (hasNextColumn(grid, x, y)) {
-            neighbours.add(grid[y][x + 1]);
+        if (hasNextColumn(grid, x)) {
+            neighbours.add(grid.getState(x + 1, y));
         }
-        if (hasNextColumn(grid, x, y) && hasNextRow(grid, y)) {
-            neighbours.add(grid[y + 1][x + 1]);
+        if (hasNextColumn(grid, x) && hasNextRow(grid, y)) {
+            neighbours.add(grid.getState(x + 1, y + 1));
         }
         if (hasNextRow(grid, y)) {
-            neighbours.add(grid[y + 1][x]);
+            neighbours.add(grid.getState(x, y + 1));
         }
+
         return filterOutDeadCells(neighbours).size();
     }
 }

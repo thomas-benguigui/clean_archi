@@ -1,6 +1,7 @@
 package com.octo.kata.archiclean.entities;
 
 public enum State {
+
     DEAD(' '),
     ALIVE('o');
 

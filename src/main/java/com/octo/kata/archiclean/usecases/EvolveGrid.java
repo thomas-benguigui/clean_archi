@@ -1,6 +1,7 @@
 package com.octo.kata.archiclean.usecases;
 
 import com.octo.kata.archiclean.entities.Cell;
+import com.octo.kata.archiclean.entities.Grid;
 import com.octo.kata.archiclean.entities.State;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -8,12 +9,12 @@ import java.util.List;
 
 public class EvolveGrid {
 
-    public static State[][] execute(List<Cell> cells) {
+    public static Grid execute(List<Cell> cells) {
         Pair<Integer, Integer> cellArrayDimensions = getCellArrayDimensions(cells);
         Integer width = cellArrayDimensions.getLeft();
         Integer height = cellArrayDimensions.getRight();
 
-        State[][] grid = cellArrayToGrid(cells, width, height);
+        Grid grid = cellArrayToGrid(cells, width, height);
         return ComputeEvolutions.execute(grid);
     }
 
@@ -32,15 +33,15 @@ public class EvolveGrid {
         return Pair.of(maxX + 1, maxY + 1);
     }
 
-    private static State[][] cellArrayToGrid(List<Cell> cells, Integer width, Integer height) {
-        State[][] grid = new State[height][width];
+    private static Grid cellArrayToGrid(List<Cell> cells, Integer width, Integer height) {
+        Grid grid = new Grid(width, height);
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                grid[y][x] = State.DEAD;
+                grid.setState(x, y, State.DEAD);
             }
         }
         cells.forEach(cell -> {
-            grid[cell.y][cell.x] = (cell.alive ? State.ALIVE : State.DEAD);
+            grid.setState(cell.x, cell.y, (cell.alive ? State.ALIVE : State.DEAD));
         });
         return grid;
     }
