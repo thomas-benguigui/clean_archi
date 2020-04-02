@@ -31,7 +31,7 @@ public class StateRepository {
         return grid;
     }
 
-    private static State[][] initializeGrid(int width, int height) {
+    public static State[][] initializeGrid(int width, int height) {
         State[][] grid = new State[height][width];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
