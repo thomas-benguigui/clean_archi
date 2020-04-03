@@ -34,6 +34,11 @@ dependencies {
     compile("commons-io:commons-io:${commonsIoVersion}")
     compile("org.apache.commons:commons-lang3:${commonsLang3Version}")
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.slf4j:slf4j-api")
+    compile("ch.qos.logback:logback-core")
+
     runtime('org.springframework.boot:spring-boot-devtools')
+    runtime("ch.qos.logback:logback-classic")
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
